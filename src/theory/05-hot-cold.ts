@@ -54,21 +54,3 @@ import { ajax } from "rxjs/ajax";
 // setTimeout(() => {
 //   const s2 = hotObservable$.subscribe(console.log);
 // }, 5000);
-
-function getUniversity(inputValue: string) {
-  return ajax("http://universities.hipolabs.com/search?country=" + inputValue);
-}
-
-const inputValue$ = fromEvent<InputEvent>(document, "input")
-  .pipe(
-    debounceTime(600),
-    map((event: InputEvent) => console.log(event))
-    //   map((inputValue: string) => inputValue.trim()),
-    //   filter((inputValue: string) => inputValue.length > 3),
-    //   distinctUntilChanged()
-  )
-  .subscribe(console.log);
-
-// const universities$ = inputValue$.pipe(switchMap(getUniversity));
-
-// universities$.subscribe(console.log);
